@@ -1,10 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
 #include "random.h"
 
-
 int main(int argc, char const *argv[]) {
-  int[10] randary;
+  int randary[10];
   int i;
-  printf("Generating Random Numbers:\n", );
+  printf("Generating Random Numbers:\n");
   for (i = 0; i < 10; i++) {
     randary[i]=rand_num();
     printf("Random %d: %d\n",i,randary[i]);
@@ -20,7 +25,7 @@ int main(int argc, char const *argv[]) {
   }
   close(file);
   printf("Reading Numbers into the file . . .\n");
-  int[10] ary;
+  int ary[10];
   int file =open("randfile",O_RDONLY);
   if (file==-1){
     printf("Error: %s\n",strerror(errno));
@@ -32,5 +37,6 @@ int main(int argc, char const *argv[]) {
   for (i = 0; i < 10; i++) {
     printf("Random %d: %d\n",i,ary[i]);
   }
+  close(file);
   return 0;
 }
