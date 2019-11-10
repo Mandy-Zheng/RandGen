@@ -17,12 +17,12 @@ int randgen(){
   int *buff=&random_num;
   //create the random number and get the address
   int reading=read(file,buff,sizeof(random_num));
-  if(reading != 0){
+  if(reading < 0){
     printf("Error %s\n",strerror(errno));
   }
   //read takes in the file then copies the first few bytes given by last parameter
   //and then puts what it read into the buff which is a pointer
   //leads to editing the random_num
   close(file);
-  return random_num
+  return random_num;
 }

@@ -1,25 +1,24 @@
 ifeq ($(DEBUG),true)
-				CC = gcc -g
+	CC = gcc -g
 else
-				CC = gcc
+	CC = gcc
 endif
 
 all: main.o random.o
-				$(CC) -o program random.o
+	$(CC) -o program main.o random.o
 
 main.o: main.c main.c random.h
-				$(CC) -c main.c
+	$(CC) -c main.c
 
 random.o: random.c random.h
-				$(CC) -c random.c random.h
+	$(CC) -c random.c random.h
 
 run:
-				./program
+	./program
 
 clean:
-				rm *.o
-				rm *.exe
-				rm random
+	rm *.o
+	rm *.exe
 
 memcheck:
-				valgrind --leak-check=yes ./program
+	valgrind --leak-check=yes ./program
